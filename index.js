@@ -9,25 +9,24 @@ String.prototype.reverse = function() {
 function Phrase(content) {
     this.content = content;
     
-    // Process the content to lowercase
-    this.processor = function(string) {
-        return string.toLowerCase();
+    // Returns the letters in the content.
+    // E.g.: new Phrase("Hello, World!").letters() === "Helloworld"
+    this.letters = function letters() {
+
+        // match any letter, case-insensitive
+        const letterRegex = /[a-z]/gi;
+
+        return (this.content.match(letterRegex) || []).join("");
     }
 
     // Returns content processed for palindrome testing.
-    this.processedContent =  function processedContent() {
-        return this.processor(this.content);
+    this.processedContent = function processedContent() {
+        return this.letters().toLowerCase();    
     }
 
     // Returns true if the phrase is a palindrome, false otherwise.
     this.palindrome = function palindrome() {
         return this.processedContent() === this.processedContent().reverse();
-    }
-    // Return a LOUDER version of the content
-    this.louder = function louder() {
-        // let louderContent = this.content.toUpperCase();
-        // return louderContent;
-        return this.content.toUpperCase();
     }
 }
 
