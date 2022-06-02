@@ -26,7 +26,7 @@ describe("Phrase", function() {
         if("should return false for an empty string", function() {
             let emptyPhrase = new Phrase("");
             assert(!emptyPhrase.palindrome());
-        })
+        });
     });
     describe("#letters", function() {
         it("should return only letters", function() {
